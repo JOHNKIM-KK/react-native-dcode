@@ -33,8 +33,10 @@ const WebApp: React.FC<Props> = ({route, navigation}: Props) => {
       source={{uri: route.params.root}}
       decelerationRate="normal"
       setSupportMultipleWindows={false}
-      onLoadStart={() => setVisible(true)}
-      onLoad={() => setVisible(false)}
+      pullToRefreshEnabled={true}
+      // onLoadStart={() => setVisible(true)}
+      // onLoad={() => setVisible(false)}
+      onLoadEnd={(p) => setVisible(p.nativeEvent.loading)}
       onShouldStartLoadWithRequest={request => {
         if (route.params.root.startsWith('https://support.itsdcode.com')) {
           return true;
@@ -47,7 +49,13 @@ const WebApp: React.FC<Props> = ({route, navigation}: Props) => {
         return true;
       }}
     />
-          {visible ? <ActivityIndicatorElement /> : null}
+          {visible ? <ActivityIndicator
+              style={StyleSheet.absoluteFill}
+              color="grey"
+              size="large"
+          />: null}
+
+          {/*{visible ? <ActivityIndicatorElement /> : null}*/}
       </>
   );
 };
