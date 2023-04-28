@@ -15,7 +15,9 @@ const Stack = createNativeStackNavigator<AppStackNavigationParams>();
 function App(): JSX.Element {
 
     useEffect(() => {
-        SplashScreen.hide();
+        setTimeout(()=>{
+            SplashScreen.hide();
+        },1500)
     }, []);
 
     return (
