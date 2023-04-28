@@ -16,12 +16,15 @@ function App(): JSX.Element {
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();
+
+
     }, 1500);
   }, []);
 
   return (
     <SafeAreaView style={StyleSheet.absoluteFill}>
-      <Stack.Navigator initialRouteName={'Splash'} screenOptions={{ headerTintColor: '#82888' }}>
+      <Stack.Navigator initialRouteName={'Splash'}
+                       screenOptions={{ headerTintColor: '#82888' }}>
         {/*<Stack.Screen name={'Splash'} component={Splash} options={{headerShown:false}}/>*/}
         <Stack.Screen
           name={'Main'}
